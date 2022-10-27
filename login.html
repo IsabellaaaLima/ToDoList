@@ -1,227 +1,173 @@
 <!DOCTYPE html>
-
-<html lang="pt-br">
+<html>
 
 <head>
-
+    <title>Cadastro</title>
     <meta charset="UTF-8">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="style.css">
-
-    <title>Login</title>
 
     <style>
         body {
-
-padding: 0;
-
-margin: 0;
-
-background-color: #60237c;
-
-}
-
-#cadastro {
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-
-height: 100vh;
-
-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-}
-
-.card {
-
-background-color: rgba(221, 154, 193, 0.3);
-
-padding: 40px;
-
-border-radius: 2px;
-
-width:280px;
-
-}
-
-.card-header {
-
-padding-bottom: 50px;
-
-opacity: 0.8;
-
-color: #fff;
-
-}
-
-.card-header::after {
-
-content: "";
-
-width: 280px;
-
-height: 1px;
-
-background-color: rgb(255, 255, 255);
-
-display: block;
-
-margin-top: -17px;
-
-margin-left: -5px;
-
-}
-
-.card-content label {
-
-color: rgb(255, 254, 254);
-
-font-size: 12px;
-
-opacity: 0.8;
-
-}
-
-.card-content-area {
-
-display: flex;
-
-flex-direction: column;
-
-padding:10px 0;
-
-}
-
-.card-content-area input {
-
-margin-top: 10px;
-
-padding:0 5px;
-
-background-color: transparent;
-
-border:none;
-
-border-bottom: 1px solid #ffffff;
-
-outline: none;
-
-color: #fff;
-
-}
-
-.card-footer {
-
-display: flex;
-
-flex-direction: column;
-
-}
-
-.card-footer .submit{
-
-width: 100%;
-
-height: 40px;
-
-background-color: rgb(86, 88, 206);
-
-border:none;
-
-color:#e1e1e1;
-
-margin: 10px 0;
-
-}
-
-.card-footer a {
-
-text-align: center;
-
-font-size: 12px;
-
-opacity: 0.8;
-
-color: #fff;
-
-text-decoration: none;
-
-}
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(to right, rgb(255, 105, 180), rgb(219, 112, 147));
+        }
+
+        .box {
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 15px;
+            width: 25%;
+        }
+
+        fieldset {
+            border: 3px solid palevioletred;
+        }
+
+        legend {
+            border: 1px solid palevioletred;
+            padding: 10px;
+            text-align: center;
+            background-color: palevioletred;
+            border-radius: 8px;
+        }
+
+        .inputBox {
+            position: relative;
+        }
+
+        .inputUser {
+            background: none;
+            border: none;
+            border-bottom: 1px solid white;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            width: 50%;
+            letter-spacing: 2px;
+        }
+
+        .labelinput {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            pointer-events: none;
+            transition: .5%;
+        }
+
+        .inputUser:focus~.labelinput,
+        .inputUser:valid~.labelinput {
+            top: -20px;
+            font-size: 12px;
+            color: palevioletred;
+        }
+
+        #data_nascimento {
+            border: none;
+            padding: 8px;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        #submit {
+            background-image: linear-gradient(to right, rgb(255, 105, 180), rgb(219, 112, 147));
+            width: 100%;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
     </style>
-
 </head>
 
 <body>
+    <div class="box">
 
-    <div id="cadastro">
-
-        <form class="card">
-
-            <div class="card-header">
-
-                <h2>Cadastro de Usuários</h2>
-
+        <fieldset>
+            <legend><b>Cadastro</b></legend>
+            <br>
+            <div class="inputBox">
+                <input type="text" name="nome" id="nome" class="inputUser" required>
+                <label for="nome" class="labelinput">Nome</label>
+            </div>
+            <br><br>
+            <div class="inputBox">
+                <input type="text" name="login" id="login" class="inputUser" required>
+                <label for="login" class="labelinput">login</label>
+            </div>
+            <br><br>
+            <div class="inputBox">
+                <input type="text" name="email" id="email" class="inputUser" required>
+                <label for="email" class="labelinput">Email</label>
+            </div>
+            <br><br>
+            <div class="inputBox">
+                <input type="password" name="senha" id="senha" class="inputUser" required>
+                <label for="senha" class="labelinput">Senha</label>
+            </div>
+            <br><br>
+            <div class="inputBox">
+                <input type="password" name="confsenha" id="confsenha" class="inputUser" required>
+                <label for="Senha" class="labelinput">Confirmar Senha</label>
             </div>
 
-            <div class="card-content">
+            <br><br>
 
-                <div class="card-content-area">
+            <button type="submit" name="submit" id="submit" onclick="ir()">Enviar</button>
 
-                    <label for="nome">Nome</label>
+        </fieldset>
+        <script>
+            let senha = document.getElementById('senha');
+            let confsenha = document.getElementById('confsenha');
 
-                    <input type="text" id="usuario" autocomplete="off">
+            function validarSenha() {
+                if (senha.value != confsenha.value) {
+                    confsenha.setCustomValidity("Senhas diferentes!");
+                    confsenha.reportValidity();
+                    return false;
+                } else {
+                    confsenha.setCustomValidity("");
+                    return true;
+                }
+            }
+            confsenha.addEventListener('input', validarSenha);
+        </script>
+        <script>
+            document.addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    const button = document.querySelector(".button");
 
-                </div>
-                <div class="card-content-area">
+                    button.click();
 
-                    <label for="login">Login</label>
+                }
+            });
 
-                    <input type="text" id="usuario" autocomplete="off">
+            const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            form.addEventListener('submit', (e) => {
+                e.preventDefault()
+            })
 
-                </div>
-                <div class="card-content-area">
+            function ir() {
+                if (nome.value, login.value, email.value, senha.value, confsenha.value == "") {
 
-                    <label for="email">Email</label>
+                }
+                else if (nome.value.length < 10, login.value.length > 10, !emailRegex.test(email.value), senha.value != confsenha.value) {
 
-                    <input type="text" id="usuario" autocomplete="off">
-
-                </div>
-
-                <div class="card-content-area">
-
-                    <label for="senha">Senha</label>
-
-                    <input type="password" id="password" autocomplete="off">
-
-                </div>
-                
-                <div class="card-content-area">
-
-                    <label for="senha">Confirme sua senha</label>
-
-                    <input type="password" id="password" autocomplete="off">
-
-                </div>
-
-            </div>
-
-            <div class="card-footer">
-
-                <input type="submit" value="entrar" class="submit"> 
-
-            </div>
-
+                }
+                else {
+                    window.location.href = "index.html";
+                }
+            }
+        </script>
         </form>
-
     </div>
-
 </body>
 
 </html>
